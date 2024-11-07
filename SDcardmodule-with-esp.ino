@@ -24,10 +24,14 @@ void setup() {
     delay(1000);  // Retry every second
   }
   Serial.println("SD card initialized successfully.");
-
-
 }
 
 void loop() {
-  // Nothing in the loop as it's a one-time SD card operation in setup
+  // Continuously search for the 'piano.wav' file
+  if (SD.exists("/piano.wav")) {
+    Serial.println("File 'piano.wav' found!");
+  } else {
+    Serial.println("File 'piano.wav' not found.");
+  }
+  delay(2000);  // Adding a small delay to reduce the frequency of checks and avoid flooding the serial output
 }
